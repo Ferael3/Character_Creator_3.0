@@ -1,0 +1,202 @@
+    * { box-sizing: border-box; }
+
+    .marcellus-regular {
+      font-family: "Marcellus", serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    body {
+      font-family: "Marcellus", serif;
+      font-weight: 400;
+      font-style: normal;
+      color: #fdba00;
+      margin: 0;
+      padding: 20px;
+      background: #680a0a;
+    }
+
+    h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 30px;
+    }
+
+    h2{
+      color: var(--primary-color);
+      margin-bottom: 30px;
+    }
+
+    select{
+      font-size: 25px;
+      font-family: "Marcellus", serif;
+      font-weight: 400;
+      font-style: normal;
+      background-color: #680a0a;
+      color: #fdba00;
+    }
+
+    .title{
+      background-color: rgb(0, 0, 0);
+      font-size: 25px;
+      border: 1px solid #fdba00;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .section {
+      background-color: rgb(0, 0, 0);
+      font-size: 25px;
+      border: 1px solid #fdba00;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .slider-container {
+      background-color: rgb(0, 0, 0);
+      border: 1px solid #fdba00;
+      border-radius: 8px;
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 1rem;
+      padding: 1rem 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .slide {
+      flex: 0 0 auto;
+      width: 250px;
+      scroll-snap-align: center;
+      background: #680a0a;
+      border-radius: 10px;
+      margin-left: 10px;
+      margin-right: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .slide-text {
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .slide:hover {
+      transform: scale(1.03);
+    }
+
+    .slideC {
+      flex: 0 0 auto;
+      width: 250px;
+      scroll-snap-align: center;
+      background: #680a0a;
+      border-radius: 10px;
+      margin-left: 10px;
+      margin-right: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .slideC img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .slideC-text {
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .slideC:hover {
+      transform: scale(1.03);
+    }
+
+    .selected {
+      border: 3px solid #fdba00;
+    }
+
+    #saved-text {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #333;
+    }
+
+    button {
+      background-color:#680a0a;
+      color: #fdba00;
+      font-family: "Marcellus", serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      height: 50px;
+      width: 250px;
+      margin-left: 30px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    #minus-button{
+      margin-left: 45px;
+    }
+
+    #Music{
+      width: 125px;
+    }
+
+    #Music:hover{
+      width: 130px;
+      height: 125px;
+    }
+
+    #final-skills-container label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #680a0a;
+      color: #fdba00;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 20px;
+      font-family: "Marcellus", serif;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 1.2;
+      margin-right: 20px;
+      margin-top: 20px;
+    }
+
+    #final-skills-container input[type="checkbox"] {
+      margin: 0;
+      vertical-align: middle;
+      accent-color: #fdba00; /* optional, customize checkbox color */
+      transform: scale(1.1);
+    }
+
+    .hidden {
+      display: none;
+    }

@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+  <title>Character Creator 3.0</title>
+</head>
+
+<body>
+
+  <div class="title">
+    <h1>Character Creator 3.0</h1>
+    <img src="Images/Music.png" alt="Music" id="Music">
+    <audio src="Title music.mp3" id="titleM" loop></audio>
+  </div>
+  
+  <h2>Select your species</h2>
+  <div class="slider-container" id="species-section">
+    <div class="slide" data-text="Dwarf">
+      <img src="Images/Dwarf.png" alt="Dwarf" />
+      <div class="slide-text">Dwarf</div>
+    </div>
+    <div class="slide" data-text="Elf">
+      <img src="Images/Elf.jpg" alt="Elf" />
+      <div class="slide-text">Elf</div>
+    </div>
+    <div class="slide" data-text="Human">
+      <img src="Images/Human.jpg" alt="Human" />
+      <div class="slide-text">Human</div>
+    </div>
+    <div class="slide" data-text="Dragonborn">
+      <img src="Images/Dragonborn.png" alt="Dragonborn" />
+      <div class="slide-text">Dragonborn</div>
+    </div>
+    <div class="slide" data-text="Gnome">
+      <img src="Images/Gnome.jpg" alt="Gnome" />
+      <div class="slide-text">Gnome</div>
+    </div>
+    <div class="slide" data-text="Goliath">
+      <img src="Images/Goliath.jpg" alt="Goliath" />
+      <div class="slide-text">Goliath</div>
+    </div>
+    <div class="slide" data-text="Halfling">
+      <img src="Images/Halfling.jpg" alt="Halfling" />
+      <div class="slide-text">Halfling</div>
+    </div>
+    <div class="slide" data-text="Half-Orc">
+      <img src="Images/Half-Orc.jpg" alt="Half-Orc" />
+      <div class="slide-text">Half-Orc</div>
+    </div>
+    <div class="slide" data-text="Tiefling">
+      <img src="Images/Tiefling.jpg" alt="Tiefling" />
+      <div class="slide-text">Tiefling</div>
+    </div>
+    <div class="slide" data-text="Aarakocra">
+      <img src="Images/Aarakocra.jpg" alt="Aarakocra" />
+      <div class="slide-text">Aarakocra</div>
+    </div>
+    <div class="slide" data-text="Autognome">
+      <img src="Images/Autognome.jpg" alt="Autognome" />
+      <div class="slide-text">Autognome</div>
+    </div>
+    <div class="slide" data-text="Genasi">
+      <img src="Images/Genasi.jpg" alt="Genasi" />
+      <div class="slide-text">Genasi</div>
+    </div>
+    <div class="slide" data-text="Giff">
+      <img src="Images/Giff.png" alt="Giff" />
+      <div class="slide-text">Giff</div>
+    </div>
+    <div class="slide" data-text="Dhampir">
+      <img src="Images/Dhampir.jpg" alt="Dhampir" />
+      <div class="slide-text">Dhampir</div>
+    </div>
+    <div class="slide" data-text="Hobgoblin">
+      <img src="Images/Hobgoblin.png" alt="Hobgoblin" />
+      <div class="slide-text">Hobgoblin</div>
+    </div>
+    <div class="slide" data-text="Kalashtar">
+      <img src="Images/Kalashtar.jpg" alt="Kalashtar" />
+      <div class="slide-text">Kalashtar</div>
+    </div>
+    <div class="slide" data-text="Kenku">
+      <img src="Images/Kenku.jpg" alt="Kenku" />
+      <div class="slide-text">Kenku</div>
+    </div>
+    <div class="slide" data-text="Kobold">
+      <img src="Images/Kobold.jpg" alt="Kobold" />
+      <div class="slide-text">Kobold</div>
+    </div>
+    <div class="slide" data-text="Lizardfolk">
+      <img src="Images/Lizardfolk.jpg" alt="Lizardfolk" />
+      <div class="slide-text">Lizardfolk</div>
+    </div>
+    <div class="slide" data-text="Loxodon">
+      <img src="Images/Loxodon.png" alt="Loxodon" />
+      <div class="slide-text">Loxodon</div>
+    </div>
+    <div class="slide" data-text="Owlin">
+      <img src="Images/Owlin.jpg" alt="Owlin" />
+      <div class="slide-text">Owlin</div>
+    </div>
+    <div class="slide" data-text="Tabaxi">
+      <img src="Images/Tabaxi.jpg" alt="Tabaxi" />
+      <div class="slide-text">Tabaxi</div>
+    </div>
+    <div class="slide" data-text="Spirithost">
+      <img src="Images/Spirithost.png" alt="Spirithost" />
+      <div class="slide-text">Spirithost</div>
+    </div>
+  </div>
+
+  <div class="section hidden" id="lienageS">
+    <label>Select a lineage:</label>
+    <select id="lienage-selection"></select>
+  </div>
+
+  <h2 class="hidden" id="signC">Select your class</h2>
+  <div class=" hidden slider-container" id="class-section">
+    <div class="slideC" class-text="Barbarian">
+      <img src="Images/Barbarian.jpg" alt="Barbarian" />
+      <div class="slide-text">Barbarian</div>
+    </div>
+    <div class="slideC" class-text="Fighter">
+      <img src="Images/Fighter.jpg" alt="Fighter" />
+      <div class="slide-text">Fighter</div>
+    </div>
+    <div class="slideC" class-text="Rogue">
+      <img src="Images/Rogue.jpg" alt="Rogue" />
+      <div class="slide-text">Rogue</div>
+    </div>
+    <div class="slideC" class-text="Monk">
+      <img src="Images/Monk.jpg" alt="Monk" />
+      <div class="slide-text">Monk</div>
+    </div>
+    <div class="slideC" class-text="Ranger">
+      <img src="Images/Ranger.jpg" alt="Ranger" />
+      <div class="slide-text">Ranger</div>
+    </div>
+    <div class="slideC" class-text="Cleric">
+      <img src="Images/Cleric.jpg" alt="Cleric" />
+      <div class="slide-text">Cleric</div>
+    </div>
+    <div class="slideC" class-text="Druid">
+      <img src="Images/Druid.jpg" alt="Druid" />
+      <div class="slide-text">Druid</div>
+    </div>
+    <div class="slideC" class-text="Bard">
+      <img src="Images/Bard.jpg" alt="Bard" />
+      <div class="slide-text">Bard</div>
+    </div>
+    <div class="slideC" class-text="Paladin">
+      <img src="Images/Paladin.jpg" alt="Paladin" />
+      <div class="slide-text">Paladin</div>
+    </div>
+    <div class="slideC" class-text="Warlock">
+      <img src="Images/Warlock.jpg" alt="Warlock" />
+      <div class="slide-text">Warlock</div>
+    </div>
+    <div class="slideC" class-text="Sorcerer">
+      <img src="Images/Sorcerer.jpg" alt="Sorcerer" />
+      <div class="slide-text">Sorcerer</div>
+    </div>
+    <div class="slideC" class-text="Wizard">
+      <img src="Images/Wizard.jpg" alt="Wizard" />
+      <div class="slide-text">Wizard</div>
+    </div>
+    <div class="slideC" class-text="Gunslinger">
+      <img src="Images/Gunslinger.png" alt="Gunslinger" />
+      <div class="slide-text">Gunslinger</div>
+    </div>
+  </div>
+
+  <div class="hidden section" id="Sclasses">
+    <label>Select a Subclass:</label>
+    <select id="sub-Select"></select>
+  </div>
+
+  <div class="section hidden" id="background-section">
+    <label for="background">Select your Background:</label>
+    <select id="backgroundS">
+      <option value="" disabled selected>Select Background</option>
+    </select>
+  </div>
+
+  <div class="section hidden" id="background-info">
+    <h3>Background Details</h3>
+    <p id="ability-scores"></p>
+    <p id="feats"></p>
+    <p id="skills"></p>
+  </div>
+
+  <div class="section hidden" id="ability-boost-choice">
+    <label>Choose ability boost method:</label>
+    <button onclick= "BoostOption1()">+1 to Three Scores</button>
+    <button onclick="BoostOption2()">+2 and +1 to Two Scores</button>
+  </div>
+
+  <div class="section hidden" id="ability-boost-choice1">
+    <p id="boostOne"></p>
+  </div>
+
+  <div class="section hidden" id="ability-boost-choice2">
+    <p>Select one ability to increase by +2 and another by +1:</p>
+    <label>Select +2:</label>
+    <select id="selectPlus2">
+      <option value="" disabled selected>Choose ability score</option>
+    </select><br>
+    <br><label>Select +1:</label>
+    <select id="selectPlus1">
+      <option value="" disabled selected>Choose ability score</option>
+    </select>
+  </div>
+
+  <div class="section hidden" id="final-skills-section">
+    <label for="final-skills">Select Final Skills Proficiencies:</label>
+    <div id="final-skills-container"></div>
+  </div>
+
+  <div class="section hidden" id="point-buy-section">
+    <h2>Point Buy Ability Scores</h2>
+    <p>Distribute 27 points among your stats. Minimum 8, Maximum 15.</p>
+    <div id="point-buy-controls"></div>
+    <p>Points Remaining: <span id="points-remaining">27</span></p>
+  </div>
+
+  <div class="section hidden" id="summary">
+
+  </div>
+
+  <script>
+    //Objects
+    const lineages = {
+      Elf: ["High Elf", "Wood Elf", "Drow", "Pallid Elf", "Eladrin", "Shadar-Kai"],
+      Dwarf: ["Hill Dwarf", "Mountain Dwarf", "Gray Dwarf"],
+      Dragonborn: ["Black", "Blue", "Green", "Red", "White", "Copper", "Bronze", "Gold", "Brass", "Silver"],
+      Gnome: ["Rock Gnome", "Forest Gnome", "Deep Gnome"],
+      Halfling: ["Stout Halfling", "Ghostwise Halflings", "Mark of Healing Halfling", "Mark of Hospitality Halfling"],
+      Tiefling: ["Asmodeus Tiefling", "Baalzebul Tiefling", "Dispater Tiefling", "Fierna Tiefling", "Glasya Tiefling", "Levistus Tiefling", "Mammon Tiefling", "Mephistopheles Tiefling", "Zariel Tiefling"],
+      Genasi: ["Air Genasi", "Earth Genasi", "Fire Genasi", "Water Genasi"],
+      Dhampir: ["Human", "Elf", "Dwarf", "Dragonborne", "Gnome", "Goliath", "Halfling", "Orc", "Tiefling", "Aarakocra", "Tabaxi", "Hobgoblin", "Kobold", "Lizardfolk", "Owlin"],
+    };
+
+    const subclasses = {
+      Barbarian: ['Berserker', 'Totem Warrior', 'Ancestral Guardian', 'Storm Herald', 'Zealot', 'Colossus', 'Tranquility'],
+      Fighter: ['Champion', 'Battle Master', 'Eldritch Knight', 'Echo Knight', 'Arcane Archer', 'Samurai', 'Rune Knight', 'Bone Knight', 'Celestial Lancer', 'Mage Hand Magus'],
+      Rogue: ['Thief', 'Assasin', 'Arcane Trickster', 'Soulknife', 'Swashbuckler', 'Arachnoid Stalker', 'Shadow Master', 'Temporal Trickster'],
+      Monk: ['Open Hand', 'Four Elements', 'Ascendant Dragon', 'Kensei', 'Astral Self', 'Mercy', 'Way of the Bow', 'Way of the Rose', 'Street Fighting'],
+      Ranger: ['Beast Master', 'Hunter', 'Gloom Stalker', 'Horizon Walker', 'DrakeWarden', 'Swarm Keeper', 'SpellBreaker', 'Trophy Hunter'],
+      Cleric: ['Life Domain', 'Tempest Domain', 'Death Domain', 'Forge Domain', 'Light Domain', 'Order Domain', 'Twilight Domain', 'Madness Domain', 'Travel Domain', 'Wealth Domain'],
+      Druid: ['Circle of Stars', 'Circle of the Land', 'Circle of the Moon', 'Circle of the Sheperd', 'Circle of Wildfire', 'Circle of the Blighted', 'Circle of the Wyrm'],
+      Bard: ['College of Eloquence', 'College of Lore', 'College of Swords', 'College of Valour', 'College of Graffiti', 'College of the Mad god', 'College of Masks' ],
+      Paladin: ['Oath of Devotion', 'Oath of the Crown', 'Oath of Vengeance', 'Oath of Conquest', 'Oath of Redemption', 'Oath of the Open Sea', 'Oath of Heresy', 'Oath of Storms', 'Oath of the Sun', 'Oath of Winter'],
+      Warlock: ['The Archfey', 'The Fiend', 'The Genie', 'The Great Old One', 'The Hexblade', 'The Dead Mist', 'The Future You', 'The Magician'],
+      Sorcerer: ['Draconic Bloodline', 'Wild Magic', 'Shadow Magic', 'Lunar Sorcery', 'Aberrant Mind', 'RuneChild', 'Mirrorkin', 'Spiritborn'],
+      Wizard: ['Evocation', 'Abjuration', 'Divination', 'Bladesinging', 'Conjuration', 'Necromancy', 'Illusion', 'Blood Magic', 'Magic Missile Mage', 'Chronomancy'],
+      Gunslinger: ['Gun Tank', 'Gun-ko Master', 'High Roller', 'Musketeer', 'Pistolero', 'Sharpshooter', 'SpellSlinger', 'Trickshot', 'White Hat']
+    };
+
+    const backgrounds = {
+        Acolyte: {
+          abilities: ["Wisdom", "Intelligence", "Charisma"],
+          feats: ["Magic Initiate"],
+          skills: ["Insight", "Religion"]
+        },
+        Soldier: {
+          abilities: ["Strength", "Constitution", "Dexterity"],
+          feats: ["Savage Attacker"],
+          skills: ["Athletics", "Intimidation"]
+        },
+        Sage: {
+          abilities: ["Intelligence", "Wisdom", "Charisma"],
+          feats: ["Magic Initiate"],
+          skills: ["Arcana", "History"]
+        },
+        Artisan: {
+          abilities: ["Strength", "Dexterity", "Intelligence"],
+          feats: ["Crafter"],
+          skills: ["Investigation", "Persuasion"]
+        },
+        Charlatan: {
+          abilities: ["Dexterity", "Constitution", "Charisma"],
+          feats: ["Skilled"],
+          skills: ["Deception", "Sleight of Hand"]
+        },
+        Criminal: {
+          abilities: ["Dexterity", "Constitution", "Intelligence"],
+          feats: ["Alert"],
+          skills: ["Stealth", "Sleight of Hand"]
+        },
+        Entertainer: {
+          abilities: ["Strength", "Dexterity", "Charisma"],
+          feats: ["Musician"],
+          skills: ["Acrobatics", "Performance"]
+        },
+        Farmer: {
+          abilities: ["Strength", "Constitution", "Wisdom"],
+          feats: ["Tough"],
+          skills: ["Animal Handling", "Nature"]
+        },  
+        Guard: {
+          abilities: ["Strength", "Wisdom", "Intelligence"],
+          feats: ["Alert"],
+          skills: ["Athletics", "Perception"]
+        },
+        Guide: {
+          abilities: ["Dexterity", "Constitution", "Wisdom"],
+          feats: ["Magic Initiate"],
+          skills: ["Stealth", "Survival"]
+        },
+        Hermit: {
+          abilities: ["Charisma", "Constitution", "Wisdom"],
+          feats: ["Healer"],
+          skills: ["Medicine", "Religion"]
+        },  
+        Merchant: {
+          abilities: ["Constitution", "Charisma", "Intelligence"],
+          feats: ["Lucky"],
+          skills: ["Animal Handling", "Persuasion"]
+        },
+        Noble: {
+          abilities: ["Strength", "Charisma", "Intelligence"],
+          feats: ["Skilled"],
+          skills: ["History", "Persuasion"]
+        }, 
+        Sailor: {
+          abilities: ["Strength", "Dexterity", "Wisdom"],
+          feats: ["Tavern Brawler"],
+          skills: ["Acrobatics", "Perception"]
+        },
+        Scribe: {
+          abilities: ["Dexterity", "Intelligence", "Wisdom"],
+          feats: ["Skilled"],
+          skills: ["Investigation", "Perception"]
+        }, 
+        Wayfarer: {
+          abilities: ["Dexterity", "Charisma", "Wisdom"],
+          feats: ["Lucky"],
+          skills: ["Insight", "Stealth"]
+        }
+    };
+
+    const classSkills= {
+        Barbarian: ["Animal Handling", "Athletics", "Intimidation", "Nature", "Perception", "Survival"],
+        Bard: ["Acrobatics", "Athletics","Animal Handling", "Arcana", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth","Survival"],
+        Cleric: ["History", "Insight", "Medicine", "Persuasion", "Religion"],
+        Druid: ["Arcana", "Animal Handling", "Insight", "Medicine", "Nature", "Perception", "Religion", "Survival"],
+        Fighter: ["Acrobatics", "Animal Handling", "Athletics", "History", "Insight", "Intimidation", "Perception", "Survival"],
+        Monk: ["Acrobatics", "Athletics", "History", "Insight", "Religion", "Stealth"],
+        Paladin: ["Athletics", "Insight", "Intimidation", "Medicine", "Persuasion", "Religion"],
+        Ranger: ["Animal Handling", "Athletics", "Insight", "Investigation", "Nature", "Perception", "Stealth", "Survival"],
+        Rogue: ["Acrobatics", "Athletics", "Deception", "Insight", "Intimidation", "Investigation", "Perception", "Performance", "Persuasion", "Sleight of Hand", "Stealth"],
+        Sorcerer: ["Arcana", "Deception", "Insight", "Intimidation", "Persuasion", "Religion"],
+        Warlock: ["Arcana", "Deception", "History", "Intimidation", "Investigation", "Nature", "Religion"],
+        Wizard: ["Arcana", "History", "Insight", "Investigation", "Medicine", "Religion"],
+        Gunslinger: ["Acrobatics", "Animal Handling", "Athletics", "Deception", "Insight", "Intimidation", "Perception", "Persuasion", "Sleight of Hand"]
+    };
+
+    const classSkillLimits = {
+        Barbarian: 2, Bard: 3, Cleric: 2, Druid: 2, Fighter: 2,
+        Monk: 2, Paladin: 2, Ranger: 3, Rogue: 4, Sorcerer: 2,
+        Warlock: 2, Wizard: 2, Gunslinger: 2
+    };
+
+     const pointCosts = {
+      8: 0, 9: 1, 10: 2, 11: 3, 12: 4, 13: 5, 14: 7, 15: 9
+    };
+
+    const stats = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"];
+    const pointValues = {};
+    let pointsRemaining = 27;
+
+    //Variables
+    const img = document.getElementById('Music');
+    const track = document.getElementById('titleM');
+    const slides = document.querySelectorAll('.slide');
+    const slidesC = document.querySelectorAll('.slideC');
+    const classSection = document.getElementById('class-section');
+    const subSection = document.getElementById('Sclasses');
+    const subSelect = document.getElementById('sub-Select');
+    const signC = document.getElementById('signC');
+    const savedTextDisplay = document.getElementById('saved-text');
+    const lineageSection = document.getElementById('lienageS');
+    const lineageSelection = document.getElementById('lienage-selection');
+    const allSection = document.querySelectorAll('.section');
+    const backgroundSection = document.getElementById('background-section');
+    const backgroundSelection = document.getElementById('backgroundS');
+    const backgroundInfo = document.getElementById('background-info');
+    const infoAbility = document.getElementById('ability-scores');
+    const infoFeat = document.getElementById('feats');
+    const infoSkill = document.getElementById('skills');
+    const boostChoice = document.getElementById('ability-boost-choice');
+    const boostChoice1 = document.getElementById('ability-boost-choice1')
+    const boostText = document.getElementById('boostOne');
+    const boostChoice2 = document.getElementById('ability-boost-choice2')
+    const selectPlus2 = document.getElementById('selectPlus2');
+    const selectPlus1 = document.getElementById('selectPlus1');
+    const finalSkill = document.getElementById('final-skills-section');
+    const finalSkillsContainer = document.getElementById('final-skills-container');
+    const pointBuy = document.getElementById('point-buy-section');
+    const fSummary = document.getElementById('summary');
+
+    //Slider Container Functions
+    slides.forEach(slide => {
+      slide.addEventListener('click', () => {
+        
+        // Remove "selected" from all
+        slides.forEach(s => s.classList.remove('selected'));
+
+        // Mark current one as selected
+        slide.classList.add('selected');
+
+        // Get text and save it
+        const targetId = slide.getAttribute('data-text');
+
+        if (targetId in lineages) {
+          lineageSection.classList.remove('hidden');
+
+          lineageSelection.innerHTML = '';
+          const defaultLineage = document.createElement("option");
+          defaultLineage.textContent = "Select a Lineage";
+          lineageSelection.appendChild(defaultLineage);
+          const chosenRace = lineages[targetId];
+          
+          for(const subr of chosenRace){
+            const option = document.createElement('option');
+            option.value = subr;
+            option.text = subr;
+            lineageSelection.appendChild(option);
+          };
+
+          lineageSelection.addEventListener('change', () => {
+            if (lineageSelection.value != '') {
+            classSection.classList.remove("hidden");
+            signC.classList.remove("hidden");
+            } 
+          });
+        }
+        else{
+          
+          lineageSection.classList.add('hidden');
+          classSection.classList.remove("hidden");
+          signC.classList.remove("hidden");
+        }
+
+      }); 
+    });
+
+    
+
+    slidesC.forEach (slideC => {
+      slideC.addEventListener('click', () => { 
+       
+        slidesC.forEach(s => s.classList.remove('selected'));
+
+        slideC.classList.add('selected');
+
+        const targetClass = slideC.getAttribute('class-text');
+
+        for(const sclass in subclasses){
+          if (sclass == targetClass) {
+            subSection.classList.remove('hidden');
+
+            subSelect.innerHTML = '';
+            const defaultSub = document.createElement("option");
+            defaultSub.textContent = "Select a Subclass";
+            subSelect.appendChild(defaultSub);
+
+            const chosenSub = subclasses[sclass];
+
+            for(const sub of chosenSub){
+              const option = document.createElement('option');
+              option.value = sub;
+              option.text = sub;
+              subSelect.appendChild(option);
+            };
+          } 
+        };
+
+      });
+    });
+
+    //Event Listeners For progression 
+
+    img.addEventListener('click', () => {
+      if (track.paused) {
+        track.play();
+        track.volume = 0.3;
+      }
+      else
+      {
+        track.pause();
+      }
+    });
+
+    subSelect.addEventListener('change', () => {
+      if( subSelect.value != ''){
+        backgroundSection.classList.remove('hidden');
+
+        for(const ground in backgrounds){
+          const option = document.createElement('option');
+          option.value = ground;
+          option.text = ground;
+          backgroundSelection.appendChild(option);
+        }
+      }
+    });
+
+    backgroundSelection.addEventListener('change', () => {
+      if (backgroundSelection.value != '') {
+        backgroundInfo.classList.remove('hidden');
+        boostChoice.classList.remove('hidden');
+
+        const bg = backgroundSelection.value;
+        const info = backgrounds[bg];
+
+        infoAbility.textContent = `Ability Scores: ${info.abilities.join(", ")}`;
+        infoFeat.textContent = `Feat: ${info.feats.join(", ")}`;
+        infoSkill.textContent = `Skills: ${info.skills.join(", ")}`;
+      }
+    });
+
+
+    //Functions Section
+    function BoostOption1(){
+
+      boostChoice1.classList.remove('hidden');
+      boostChoice2.classList.add('hidden');
+
+      const bg = backgroundSelection.value;
+      const info = backgrounds[bg];
+
+      boostText.textContent = `Ability Scores: ${info.abilities.join(" +1, ")} +1`;
+
+      selectPlus2.innerHTML = '';
+      selectPlus1.innerHTML = '';
+
+      const defaultOption = document.createElement("option");
+      defaultOption.textContent = "Select an Ability";
+      selectPlus2.appendChild(defaultOption.cloneNode(true));
+      selectPlus1.appendChild(defaultOption.cloneNode(true));
+
+      finalSkill.classList.remove('hidden');
+      UpdateFinalSkills();
+
+    };
+
+    function BoostOption2() {
+
+      boostChoice2.classList.remove('hidden');
+      boostChoice1.classList.add('hidden');
+
+      const abs = backgrounds[backgroundSelection.value].abilities;
+
+      abs.forEach(ability => {
+          const option1 = document.createElement("option");
+          option1.value = ability;
+          option1.textContent = ability;
+          selectPlus2.appendChild(option1);
+
+          const option2 = document.createElement("option");
+          option2.value = ability;
+          option2.textContent = ability;
+          selectPlus1.appendChild(option2);
+      });
+
+      selectPlus2.addEventListener("change", () => {
+          Array.from(selectPlus1.options).forEach(opt => {
+            opt.disabled = opt.value === selectPlus2.value;
+          });
+        });
+
+        selectPlus1.addEventListener("change", () => {
+          Array.from(selectPlus2.options).forEach(opt => {
+            opt.disabled = opt.value === selectPlus1.value;
+          });
+
+          finalSkill.classList.remove('hidden');
+          UpdateFinalSkills();
+          UpdateSummary();
+        });
+    }
+
+    function UpdateFinalSkills() {
+
+      finalSkillsContainer.innerHTML = "";
+      const slideC = document.querySelector('.slideC.selected');
+      const selectedClass = slideC.getAttribute('class-text');
+      const backgroundSkills = backgrounds[backgroundSelection.value].skills;
+      const allowedSkills = classSkills[selectedClass];
+      const maxSelectable = classSkillLimits[selectedClass];
+
+      allowedSkills.forEach(skill => {
+        if (!backgroundSkills.includes(skill)) {
+          const label = document.createElement("label");
+          label.textContent = skill;
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.name = "final-skill";
+          checkbox.value = skill;
+
+          label.prepend(checkbox);
+          finalSkillsContainer.appendChild(label);
+
+          checkbox.addEventListener("change", () => {
+            const checked = document.querySelectorAll("input[name='final-skill']:checked");
+            if (checked.length >= maxSelectable) {
+              document.querySelectorAll("input[name='final-skill']").forEach(cb => {
+                if (!cb.checked) cb.disabled = true;
+              });
+              pointBuy.classList.remove('hidden');
+              updatePointBuyUI();
+            } 
+            else {
+              document.querySelectorAll("input[name='final-skill']").forEach(cb => cb.disabled = false);
+            }
+          });
+        }
+      });
+    };
+
+    function updatePointBuyUI() {
+      const container = document.getElementById("point-buy-controls");
+      container.innerHTML = "";
+      pointsRemaining = 27;
+
+      stats.forEach(stat => {
+        if (!(stat in pointValues)) pointValues[stat] = 8;
+        const value = pointValues[stat];
+        const div = document.createElement("div");
+        div.className = "stat-control";
+
+        const label = document.createElement("label");
+        label.textContent = `${stat}:`;
+
+        const valueContainer = document.createElement("div");
+        valueContainer.className = "stat-value-container";
+
+        const valueSpan = document.createElement("span");
+        valueSpan.id = `value-${stat}`;
+        valueSpan.classList.add('aScore');
+        valueSpan.textContent = value;
+
+        const plus = document.createElement("button");
+        plus.textContent = "+";
+        plus.onclick = () => adjustStat(stat, 1);
+
+        const minus = document.createElement("button");
+        minus.id = 'minus-button';
+        minus.textContent = "-";
+        minus.onclick = () => adjustStat(stat, -1);
+
+        valueContainer.appendChild(valueSpan);
+        valueContainer.appendChild(plus);
+        valueContainer.appendChild(minus);
+
+        div.appendChild(label);
+        div.appendChild(valueContainer);
+        container.appendChild(div);
+      });
+
+      updatePointsRemaining();
+    };
+
+    function calculateTotalCost() {
+      return stats.reduce((sum, stat) => sum + pointCosts[pointValues[stat]], 0);
+    };
+
+    function updatePointsRemaining() {
+      pointsRemaining = 27 - calculateTotalCost();
+      document.getElementById("points-remaining").textContent = pointsRemaining;
+
+      if(pointsRemaining == 0){
+        fSummary.classList.remove('hidden');
+        UpdateSummary();
+      }
+    };
+
+    function adjustStat(stat, delta) {
+      const current = pointValues[stat];
+      const newVal = current + delta;
+      if (newVal < 8 || newVal > 15) return;
+      const temp = { ...pointValues, [stat]: newVal };
+      const tempCost = stats.reduce((sum, s) => sum + pointCosts[temp[s]], 0);
+      if (tempCost <= 27) {
+        pointValues[stat] = newVal;
+        document.getElementById(`value-${stat}`).textContent = newVal;
+        updatePointsRemaining();
+      }
+    };
+
+    function UpdateSummary(){
+
+      fSummary.innerHTML = '';
+
+      const fTittle = document.createElement('h1');
+      fTittle.textContent = 'Final Results';
+      fSummary.appendChild(fTittle);
+
+      const slide = document.querySelector('.slide.selected');
+      const fSpecies = slide.getAttribute('data-text');
+      const showSpecies = document.createElement('h3');
+      showSpecies.textContent = '- Selected Species: ' + fSpecies + '.' ;
+      fSummary.appendChild(showSpecies);
+
+      if (lineageSelection.value != '') {
+        
+        const fLineage = lineageSelection.value;
+        const showLineage = document.createElement('h3');
+        showLineage.textContent = '- Selected Lineage: ' + fLineage + '.'; 
+        fSummary.appendChild(showLineage);
+      }
+
+      const slideC = document.querySelector('.slideC.selected');
+      const fClass = slideC.getAttribute('class-text');
+      const showClass = document.createElement('h3');
+      showClass.textContent = '- Selected Class: ' + fClass + '.';
+      fSummary.appendChild(showClass);
+
+      const fSub = subSelect.value;
+      const showSub = document.createElement('h3');
+      showSub.textContent = '- Selected Subclass: ' + fSub + '.';
+      fSummary.appendChild(showSub);
+
+      const fBackground = backgroundSelection.value;
+      const showBackground = document.createElement('h3');
+      showBackground.textContent = '- Selected Background: ' + fBackground + '.';
+      fSummary.appendChild(showBackground);
+
+      if (!boostChoice1.classList.contains('hidden')) {
+        const fBoost1 = boostText.textContent;
+        const showBoost1 = document.createElement('h3');
+        showBoost1.textContent = '- ' + fBoost1 + '.';
+        fSummary.appendChild(showBoost1);
+      }
+      else{
+        const fBoost2a = selectPlus2.value;
+        const fBoost2b = selectPlus1.value;
+        const showBoost2 = document.createElement('h3');
+        showBoost2.textContent = '- Selected Boosts: ' + fBoost2a + '+2  ' + fBoost2b + '+1.';
+        fSummary.appendChild(showBoost2);
+      }
+
+      const checked = document.querySelectorAll("input[name='final-skill']:checked");
+      const checkedValues = Array.from(checked).map(input => input.value);
+      const checkedText = checkedValues.join(', ');
+      const showProficiencies = document.createElement('h3');
+      showProficiencies.textContent = '-Selected Proficiencies: ' + checkedText + '.';
+      fSummary.appendChild(showProficiencies);
+
+      const cScore = document.querySelectorAll('span.aScore');
+      const scoreValues = Array.from(cScore).map(input => input.textContent);
+      const prefix = [' Strength:', '   Dexterity:', '   Constitution:', '   Intelligence:', '   Wisdom:', '   Charisma:'];
+      //How to combine two arrays into a single string
+      const pScores = scoreValues.reduce((acc, skill, i) =>{
+        if(i===0) return prefix[0] + skill;
+        return acc + (prefix[i] || ' ') +skill;
+      }, '');
+      //
+      const showScores = document.createElement('h3');
+      showScores.textContent = '- Point Buy Results: ' + pScores;
+      fSummary.appendChild(showScores);
+
+
+    };
+
+  </script>
+</body>
+</html>
