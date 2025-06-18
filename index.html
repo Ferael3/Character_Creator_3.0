@@ -360,13 +360,33 @@
         Gunslinger: ["Acrobatics", "Animal Handling", "Athletics", "Deception", "Insight", "Intimidation", "Perception", "Persuasion", "Sleight of Hand"]
     };
 
+    const savingThrows = {
+        Barbarian: ['Strength', 'Constitution'],
+        Bard: ['Dexterity', 'Charisma'],
+        Cleric: ['Wisdom', 'Charisma'],
+        Druid: ['Intelligence', 'Wisdom'],
+        Fighter: ['Strength', 'Constitution'],
+        Monk: ['Strength', 'Dexterity'],
+        Paladin: ['Wisdom', 'Charisma'],
+        Ranger: ['Strength', 'Dexterity'],
+        Rogue: ['Dexterity', 'Intelligence'],
+        Sorcerer: ['Constitution', 'Charisma'],
+        Warlock: ['Wisdom', 'Charisma'],
+        Wizard: ['Intelligence', 'Wisdom'],
+        Gunslinger: ['Dexterity', 'Charisma']
+    }
+
     const classSkillLimits = {
         Barbarian: 2, Bard: 3, Cleric: 2, Druid: 2, Fighter: 2,
         Monk: 2, Paladin: 2, Ranger: 3, Rogue: 4, Sorcerer: 2,
         Warlock: 2, Wizard: 2, Gunslinger: 2
     };
 
-     const pointCosts = {
+    const classExpertiselimits = {
+      Bard: 2, Rogue: 2, Ranger: 1, Wizard: 1
+    };
+
+    const pointCosts = {
       8: 0, 9: 1, 10: 2, 11: 3, 12: 4, 13: 5, 14: 7, 15: 9
     };
 
@@ -404,6 +424,7 @@
     const pointBuy = document.getElementById('point-buy-section');
     const fSummary = document.getElementById('summary');
 
+
     //Slider Container Functions
     slides.forEach(slide => {
       slide.addEventListener('click', () => {
@@ -438,15 +459,17 @@
             classSection.classList.remove("hidden");
             signC.classList.remove("hidden");
             } 
+            UpdateSummary();
           });
         }
         else{
-          
           lineageSection.classList.add('hidden');
+          lineageSelection.value = '';
           classSection.classList.remove("hidden");
           signC.classList.remove("hidden");
         }
 
+        UpdateSummary();
       }); 
     });
 
@@ -481,6 +504,8 @@
           } 
         };
 
+        UpdateSummary();
+
       });
     });
 
@@ -508,6 +533,7 @@
           backgroundSelection.appendChild(option);
         }
       }
+      UpdateSummary();
     });
 
     backgroundSelection.addEventListener('change', () => {
@@ -522,6 +548,7 @@
         infoFeat.textContent = `Feat: ${info.feats.join(", ")}`;
         infoSkill.textContent = `Skills: ${info.skills.join(", ")}`;
       }
+      UpdateSummary();
     });
 
 
@@ -546,6 +573,7 @@
 
       finalSkill.classList.remove('hidden');
       UpdateFinalSkills();
+      UpdateSummary();
 
     };
 
@@ -572,6 +600,7 @@
           Array.from(selectPlus1.options).forEach(opt => {
             opt.disabled = opt.value === selectPlus2.value;
           });
+          UpdateSummary();
         });
 
         selectPlus1.addEventListener("change", () => {
@@ -612,8 +641,10 @@
               document.querySelectorAll("input[name='final-skill']").forEach(cb => {
                 if (!cb.checked) cb.disabled = true;
               });
+
               pointBuy.classList.remove('hidden');
               updatePointBuyUI();
+              UpdateSummary();
             } 
             else {
               document.querySelectorAll("input[name='final-skill']").forEach(cb => cb.disabled = false);
@@ -741,31 +772,37 @@
         const fBoost2a = selectPlus2.value;
         const fBoost2b = selectPlus1.value;
         const showBoost2 = document.createElement('h3');
-        showBoost2.textContent = '- Selected Boosts: ' + fBoost2a + '+2  ' + fBoost2b + '+1.';
+        showBoost2.textContent = '- Selected Boosts: ' + fBoost2a + ' +2  ' + fBoost2b + ' +1.';
         fSummary.appendChild(showBoost2);
       }
 
       const checked = document.querySelectorAll("input[name='final-skill']:checked");
       const checkedValues = Array.from(checked).map(input => input.value);
       const checkedText = checkedValues.join(', ');
+      const backgroundProf = backgrounds[fBackground].skills;
+      const addedProf = backgroundProf.join(', ');
       const showProficiencies = document.createElement('h3');
-      showProficiencies.textContent = '-Selected Proficiencies: ' + checkedText + '.';
+      showProficiencies.textContent = '- Selected Proficiencies: ' + checkedText + ', ' + addedProf +'.';
       fSummary.appendChild(showProficiencies);
+
+      const sThrows = savingThrows[fClass];
+      const vThrows = sThrows.join(', ');
+      const showSaving = document.createElement('h3');
+      showSaving.textContent = '- Saving Throw Proficiencies: ' + vThrows;
+      fSummary.appendChild(showSaving);
 
       const cScore = document.querySelectorAll('span.aScore');
       const scoreValues = Array.from(cScore).map(input => input.textContent);
-      const prefix = [' Strength:', '   Dexterity:', '   Constitution:', '   Intelligence:', '   Wisdom:', '   Charisma:'];
+      const prefix = ['* Strength = ', '* Dexterity = ', '* Constitution = ', '* Intelligence = ', '* Wisdom = ', '* Charisma = '];
       //How to combine two arrays into a single string
-      const pScores = scoreValues.reduce((acc, skill, i) =>{
-        if(i===0) return prefix[0] + skill;
-        return acc + (prefix[i] || ' ') +skill;
+      const pScores = scoreValues.reduce((acc, skill, i) => {
+      const line = `${prefix[i] || ''}${skill}`;
+      return acc + (i === 0 ? '' : '<br>') + line;
       }, '');
       //
       const showScores = document.createElement('h3');
-      showScores.textContent = '- Point Buy Results: ' + pScores;
+      showScores.innerHTML = '- Point Buy Results:<br>' + pScores;
       fSummary.appendChild(showScores);
-
-
     };
 
   </script>
