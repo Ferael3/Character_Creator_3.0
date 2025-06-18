@@ -677,6 +677,7 @@
         valueSpan.textContent = value;
 
         const plus = document.createElement("button");
+        plus.id = 'plus-button';
         plus.textContent = "+";
         plus.onclick = () => adjustStat(stat, 1);
 
