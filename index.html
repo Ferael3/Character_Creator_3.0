@@ -535,6 +535,11 @@
       if( subSelect.value != ''){
         backgroundSection.classList.remove('hidden');
 
+        backgroundSelection.innerHTML = '';
+        const defaultBack = document.createElement('option');
+        defaultBack.textContent = "Select a Background";
+        backgroundSelection.appendChild(defaultBack);
+
         for(const ground in backgrounds){
           const option = document.createElement('option');
           option.value = ground;
@@ -558,6 +563,8 @@
         infoAbility.textContent = `Ability Scores: ${info.abilities.join(", ")}`;
         infoFeat.textContent = `Feat: ${info.feats.join(", ")}`;
         infoSkill.textContent = `Skills: ${info.skills.join(", ")}`;
+
+        UpdateSummary();
       }
       
       
