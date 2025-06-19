@@ -34,6 +34,8 @@
       font-style: normal;
       background-color: #680a0a;
       color: #fdba00;
+      border: 1px solid #fdba00;
+      border-radius: 10px;
     }
 
     .title{
@@ -178,6 +180,10 @@
     #Music:hover{
       width: 130px;
       height: 125px;
+    }
+
+   #cExpertise2{
+      margin-top: 20px;
     }
 
     #final-skills-container label {
