@@ -540,6 +540,7 @@
       if (backgroundSelection.value != '') {
         backgroundInfo.classList.remove('hidden');
         boostChoice.classList.remove('hidden');
+        BoostOption2();
 
         const bg = backgroundSelection.value;
         const info = backgrounds[bg];
@@ -581,6 +582,13 @@
 
       boostChoice2.classList.remove('hidden');
       boostChoice1.classList.add('hidden');
+
+      selectPlus2.innerHTML = '';
+      selectPlus1.innerHTML = '';
+      const defaultOption = document.createElement("option");
+      defaultOption.textContent = "Choose ability score";
+      selectPlus2.appendChild(defaultOption.cloneNode(true));
+      selectPlus1.appendChild(defaultOption.cloneNode(true));
 
       const abs = backgrounds[backgroundSelection.value].abilities;
 
