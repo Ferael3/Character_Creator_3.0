@@ -221,6 +221,10 @@
     <div id="final-skills-container"></div>
   </div>
 
+  <div class="section hidden" id="expertise-skills-section">
+    <p>Select your expertise:</p>
+  </div>
+
   <div class="section hidden" id="point-buy-section">
     <h2>Point Buy Ability Scores</h2>
     <p>Distribute 27 points among your stats. Minimum 8, Maximum 15.</p>
@@ -382,10 +386,6 @@
         Warlock: 2, Wizard: 2, Gunslinger: 2
     };
 
-    const classExpertiselimits = {
-      Bard: 2, Rogue: 2, Ranger: 1, Wizard: 1
-    };
-
     const pointCosts = {
       8: 0, 9: 1, 10: 2, 11: 3, 12: 4, 13: 5, 14: 7, 15: 9
     };
@@ -421,6 +421,7 @@
     const selectPlus1 = document.getElementById('selectPlus1');
     const finalSkill = document.getElementById('final-skills-section');
     const finalSkillsContainer = document.getElementById('final-skills-container');
+    const expertiseContainer = document.getElementById('expertise-skills-section');
     const pointBuy = document.getElementById('point-buy-section');
     const fSummary = document.getElementById('summary');
 
@@ -458,18 +459,21 @@
             if (lineageSelection.value != '') {
             classSection.classList.remove("hidden");
             signC.classList.remove("hidden");
-            } 
             UpdateSummary();
+            } 
+            
           });
+          UpdateSummary();
         }
         else{
           lineageSection.classList.add('hidden');
           lineageSelection.value = '';
           classSection.classList.remove("hidden");
           signC.classList.remove("hidden");
+          UpdateSummary();
         }
 
-        UpdateSummary();
+        
       }); 
     });
 
@@ -504,6 +508,11 @@
           } 
         };
 
+        
+        UpdateFinalSkills();
+        if (!['Rogue', 'Bard', 'Ranger', 'Wizard'].includes(targetClass)) {
+          expertiseContainer.classList.add('hidden');
+        }
         UpdateSummary();
 
       });
@@ -532,8 +541,9 @@
           option.text = ground;
           backgroundSelection.appendChild(option);
         }
+        UpdateSummary();
       }
-      UpdateSummary();
+      
     });
 
     backgroundSelection.addEventListener('change', () => {
@@ -549,7 +559,8 @@
         infoFeat.textContent = `Feat: ${info.feats.join(", ")}`;
         infoSkill.textContent = `Skills: ${info.skills.join(", ")}`;
       }
-      UpdateSummary();
+      
+      
     });
 
 
@@ -571,7 +582,7 @@
       selectPlus1.innerHTML = '';
 
       const defaultOption = document.createElement("option");
-      defaultOption.textContent = "Select an Ability";
+      defaultOption.textContent = "Choose ability score";
       selectPlus2.appendChild(defaultOption.cloneNode(true));
       selectPlus1.appendChild(defaultOption.cloneNode(true));
 
@@ -652,10 +663,8 @@
               document.querySelectorAll("input[name='final-skill']").forEach(cb => {
                 if (!cb.checked) cb.disabled = true;
               });
-
-              pointBuy.classList.remove('hidden');
-              updatePointBuyUI();
-              UpdateSummary();
+              UpdateExpertise(selectedClass);
+      
             } 
             else {
               document.querySelectorAll("input[name='final-skill']").forEach(cb => cb.disabled = false);
@@ -664,6 +673,144 @@
         }
       });
     };
+
+    function UpdateExpertise(sclass) {
+
+      if (['Rogue', 'Bard', 'Ranger', 'Wizard'].includes(sclass)) {
+
+        expertiseContainer.classList.remove('hidden');
+        expertiseContainer.innerHTML = '';
+        const checked = document.querySelectorAll("input[name='final-skill']:checked");
+        const selected = Array.from(checked).map(input => input.value);
+        const included = backgrounds[backgroundSelection.value].skills;
+        const allSkills = selected.concat(included);
+        const phrase = document.createElement('p');
+        phrase.innerHTML = 'Choose your expertise: <br>';
+        expertiseContainer.appendChild(phrase);
+
+        if (sclass === 'Rogue' || sclass === 'Bard' ) {
+                  
+          const cExpertise1 = document.createElement('select');
+          cExpertise1.id = 'cExpertise1';
+          cExpertise1.classList.add('expertSelect');
+          expertiseContainer.appendChild(cExpertise1);
+          const space = document.createElement('br');
+          expertiseContainer.appendChild(space);
+          const cExpertise2 = document.createElement('select');
+          cExpertise2.id = 'cExpertise2';
+          cExpertise2.classList.add('expertSelect');
+          expertiseContainer.appendChild(cExpertise2);
+
+          cExpertise1.innerHTML = '';
+          cExpertise2.innerHTML = '';
+
+          const defaultOption1 = document.createElement("option");
+          defaultOption1.textContent = "1st Expertise";
+          const defaultOption2 = document.createElement("option");
+          defaultOption2.textContent = "2nd Expertise";
+          cExpertise1.appendChild(defaultOption1);
+          cExpertise2.appendChild(defaultOption2);
+
+          allSkills.forEach(skill => {
+
+            const option = document.createElement('option');
+            option.value = skill;
+            option.textContent = skill;
+            cExpertise1.appendChild(option.cloneNode(true));
+            cExpertise2.appendChild(option.cloneNode(true));
+          });
+
+          cExpertise1.addEventListener('change', () => {
+            Array.from(cExpertise2.options).forEach(opt => {
+            opt.disabled = opt.value === cExpertise1.value
+            });
+
+          });
+
+          cExpertise2.addEventListener('change', () => {
+            Array.from(cExpertise1.options).forEach(opt => {
+              opt.disabled = opt.value === cExpertise2.value
+             });
+
+             if (cExpertise2.value != '') {
+              pointBuy.classList.remove('hidden');
+              updatePointBuyUI();
+              UpdateSummary();
+             }
+
+          });         
+        }
+        else if (sclass === 'Ranger') {
+
+          const cExpertise = document.createElement('select');
+          cExpertise.id = 'cExpertise1';
+          cExpertise.classList.add('expertSelect');
+          expertiseContainer.appendChild(cExpertise);
+
+          cExpertise.innerHTML = '';
+
+          const defaultOption = document.createElement("option");
+          defaultOption.textContent = "Expertise Options";
+          cExpertise.appendChild(defaultOption);
+
+          allSkills.forEach(skill => {
+
+            const option = document.createElement('option');
+            option.value = skill;
+            option.textContent = skill;
+            cExpertise.appendChild(option);
+            
+          });
+
+          cExpertise.addEventListener('change', () => {
+            if (cExpertise.value !== '') {
+            pointBuy.classList.remove('hidden');
+            updatePointBuyUI();
+            UpdateSummary();
+            }
+          });
+
+        }
+        else{
+
+          const cExpertise = document.createElement('select');
+          cExpertise.id = 'cExpertise1';
+          cExpertise.classList.add('expertSelect');
+          expertiseContainer.appendChild(cExpertise);
+
+          cExpertise.innerHTML = '';
+
+          const defaultOption1 = document.createElement("option");
+          defaultOption1.textContent = "Expertise Options";
+          cExpertise.appendChild(defaultOption1);
+
+          allSkills.forEach(skill => {
+
+            if (['Arcana', 'History', 'Medicine', 'Investigation', 'Nature', 'Religion'].includes(skill)) {
+              const option = document.createElement('option');
+              option.value = skill;
+              option.textContent = skill;
+              cExpertise.appendChild(option);
+            } 
+          });
+
+          cExpertise.addEventListener('change', () => {
+            if (cExpertise.value !== '') {
+            pointBuy.classList.remove('hidden');
+            updatePointBuyUI();
+            UpdateSummary();
+            }
+          });
+
+        }
+      }
+      else{
+        expertiseContainer.classList.add('hidden');
+        pointBuy.classList.remove('hidden');
+        updatePointBuyUI();
+        UpdateSummary();
+      }
+    }
 
     function updatePointBuyUI() {
       const container = document.getElementById("point-buy-controls");
@@ -784,7 +931,7 @@
         const fBoost2a = selectPlus2.value;
         const fBoost2b = selectPlus1.value;
         const showBoost2 = document.createElement('h3');
-        showBoost2.textContent = '- Selected Boosts: ' + fBoost2a + ' +2  ' + fBoost2b + ' +1.';
+        showBoost2.innerHTML = '- Selected Boosts: <br>' + '* ' + fBoost2a + ' +2  <br>' + '* ' + fBoost2b + ' +1.';
         fSummary.appendChild(showBoost2);
       }
 
@@ -796,6 +943,16 @@
       const showProficiencies = document.createElement('h3');
       showProficiencies.textContent = '- Selected Proficiencies: ' + checkedText + ', ' + addedProf +'.';
       fSummary.appendChild(showProficiencies);
+
+      if (['Rogue', 'Bard', 'Ranger', 'Wizard'].includes(fClass)) {
+        const expSelect = document.querySelectorAll('.expertSelect');
+        const expArray = Array.from(expSelect).map(input => input.value);
+        const pointer = '* ';
+        const fExpert = expArray.map(exp => pointer + exp).join('<br>');
+        const showExpertise = document.createElement('h3');
+        showExpertise.innerHTML = '- Selected Expertise: <br>' + fExpert + '.';
+        fSummary.appendChild(showExpertise);
+      }
 
       const sThrows = savingThrows[fClass];
       const vThrows = sThrows.join(', ');
