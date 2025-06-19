@@ -560,9 +560,12 @@
       boostChoice2.classList.add('hidden');
 
       const bg = backgroundSelection.value;
-      const info = backgrounds[bg];
+      const info = backgrounds[bg].abilities;
+      const prefix = '* ';
+      const suffix = ' +1';
+      const formatted = info.map(inf => prefix + inf + suffix).join('<br>');
 
-      boostText.textContent = `Ability Scores: ${info.abilities.join(" +1, ")} +1`;
+      boostText.innerHTML = 'Selected boosts:<br>' + formatted;
 
       selectPlus2.innerHTML = '';
       selectPlus1.innerHTML = '';
@@ -772,9 +775,9 @@
       fSummary.appendChild(showBackground);
 
       if (!boostChoice1.classList.contains('hidden')) {
-        const fBoost1 = boostText.textContent;
+        const fBoost1 = boostText.innerHTML;
         const showBoost1 = document.createElement('h3');
-        showBoost1.textContent = '- ' + fBoost1 + '.';
+        showBoost1.innerHTML = '- ' + fBoost1 + '.';
         fSummary.appendChild(showBoost1);
       }
       else{
